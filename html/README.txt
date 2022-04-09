@@ -1,0 +1,1 @@
+Så klart, eftersom SQL-anslutningar är integrerade i filerna så blir de dysfunktionella vid öppning. http://176.10.253.89:12345/

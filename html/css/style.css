@@ -1,0 +1,610 @@
+@import url('http://fonts.cdnfonts.com/css/nu-kei');
+@import url('http://fonts.cdnfonts.com/css/moto-verse');
+
+:root{
+    --comment-line-height: 1.75em;
+}
+
+/*generic*/
+
+*{
+    /*not ugly*/
+    box-sizing: border-box;
+}
+*::selection{
+    background-color: rgb(255, 229, 83);
+    color: rgb(187, 59, 0);
+}
+
+a{
+    color: rgb(231, 123, 0);
+}
+
+html, body{
+    height: 100%;
+    position: relative;
+    margin: 0;
+}
+
+html{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+}
+
+body{
+    background-color: rgb(82, 82, 82);
+    padding: auto;
+    padding-top:50px;
+    background-position: 100%;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    cursor: default;
+}
+
+
+
+@keyframes bg-change {
+	0% {
+		filter:hue-rotate(0deg);
+	}
+	100% {
+		filter:hue-rotate(360deg);
+	}
+}
+
+.fa-heart{
+    all: unset;
+
+    font-size:large;
+    display: inline;
+    color:rgb(225, 225, 225);
+}
+
+.fa-heart:hover, footer small{
+    color: rgb(255, 130, 130);
+
+    /*gradient*/
+    background-image: 
+    radial-gradient(circle farthest-side at top right, transparent, rgb(78, 83, 92)), radial-gradient(ellipse farthest-corner at 0% 100%, transparent, rgb(175, 149, 166));
+    animation:bg-change 5s infinite;
+    animation-timing-function: linear;
+
+    background-clip:text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    
+
+}
+
+.fa-heart:active{
+    color: rgb(151, 26, 26);
+    transform: scale(0.9,0,9);
+}
+
+/*bör vara längst ned, efter alla objekt med denna klass*/
+
+.hoverExpand{
+    transition-duration: 0.2s;
+}
+.hoverExpand:hover{
+    transform: scale(1.1,1.1);
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+
+
+/*effect*/
+body::before{
+    background-image: url('../img/scanlines.png'), radial-gradient(rgb(9, 19, 48),rgb(255, 203, 154));
+    mix-blend-mode:multiply;
+    content: "";
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+    
+    filter: 
+    grayscale(70%) opacity(30%);
+}
+
+#everything{
+    position: relative;
+    text-align: center;
+    line-height: 0; /*innehållet i denna box är bl.a. inline-block, så text-justeringar är nödvändigt*/
+
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/*--------------------------------------------------*/
+/*                      nav                         */
+/*--------------------------------------------------*/
+
+nav{
+    text-align: initial;
+    display: block;
+
+    margin-right: 20px;
+    width: 50px;
+
+    z-index: 99;
+
+    height: fit-content;
+    min-height: 20px;
+    position: sticky;
+    top:20px;
+
+    border-radius: 5px;
+
+    background-color: rgb(241, 241, 241);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+nav>ul{
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+nav li{
+    width: 100%;
+}
+
+nav li{
+    background-color: rgb(209, 190, 255);
+}
+
+nav li:nth-child(2n+2){
+    background-color: rgb(255, 206, 221);
+}
+
+nav li:nth-child(3n+3){
+    background-color: rgb(255, 220, 206);
+}
+
+nav li:nth-child(4n+4){
+    background-color: rgb(255, 250, 206);
+}
+
+nav li a{
+    display: block;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+
+    color:rgb(94, 82, 167);
+}
+
+nav li:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+/*navigation dropdown, även mq*/
+
+#drop{
+    display: none;
+    height: 40px;
+    line-height: 40px;
+    margin: 15px;
+    padding: 0;
+    font-size: large;
+    border: none;
+
+    width: 40px;
+    background-color: white;
+    border-radius: 50px;
+    text-align: center;
+}
+
+ul#menu{
+    transition-duration:1s;
+}
+
+
+
+
+
+
+#wrapper
+{
+    text-align: initial;
+    line-height: normal;
+
+    display: block;
+
+    width: 85%;
+    max-width: 900px;
+    
+    margin: 0;
+
+    padding: 40px;
+
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    
+}
+
+footer{
+    display: block;
+    margin-top:8vw;
+    padding:1em;
+    min-height: 50px;
+        
+
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    position:relative;
+}
+
+main /*determines height*/
+{
+    min-height: 100vh;
+    padding: 20px 40px 20px 40px;
+    overflow: inherit;
+}
+
+/*--------------------------------------------------*/
+/*                     form                         */
+/*--------------------------------------------------*/
+
+
+#commentForm [type="text"], #commentForm textarea{
+    border-style: none;
+    background-color: rgb(215, 215, 215);
+    border-radius: 3px;
+    line-height: 26px;
+    font-size: medium;
+
+    padding-left: 6px;
+    padding-right: 6px;
+    width: 200px;
+    font-family: inherit;
+}
+
+#commentForm textarea{
+    width: 100%;
+    height: 200px;
+    /*hidden overflow g�r expansionen av boxen accurate*/
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+.buttonContainer{
+    height: 35px;
+}
+
+#ServerSubmission{
+    float:right;
+    width: 100px;
+
+    background-color: rgb(173, 236, 78);
+    padding: 5px;
+    margin: 5px 0px 5px 0px;
+    color: black;
+
+    border-radius: 3px;
+    border: none;
+
+    transition-duration: 0.2s;
+}
+
+#ServerSubmission:hover{
+    transition-duration: 0.3s;
+    box-shadow: inset 0em -30px rgb(214, 255, 66);
+    cursor: pointer;
+}
+
+/*--------------------------------------------------*/
+/*                     content                      */
+/*--------------------------------------------------*/
+
+
+div.comments{
+    text-align:justify;
+    word-wrap:normal;
+    overflow-wrap: break-word;
+}
+
+ul.comment{
+    border-spacing: 0px;
+    border-radius: 3px;
+    overflow:hidden;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: var(--comment-line-height);
+
+    /*visa kommentarer i inline = coolt*/
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    transition-duration: 0.2s;
+}
+
+/*styla li-element beroende p� ordning i lista (utav lathet)*/
+
+/*--------------------------------------------------*/
+/*                     element                      */
+/*--------------------------------------------------*/
+
+/*likes*/
+.commentLikes
+{
+	display: inline-block;
+}
+
+/*+id*/
+.commentDeets{
+    float:right;
+    display: flex;
+    align-items: center;
+}
+
+/*margin between comment number & picture*/
+.commentDeets p ~ .commentPfp {
+    margin-left: 10px;
+}
+
+.commentPfp{
+    border-radius: 50%;
+    height: calc(var(--comment-line-height) + 1em);
+    width: calc(var(--comment-line-height) + 1em);
+}
+
+.commentName{
+    background-color: rgb(231, 231, 231);
+    box-shadow: inset 0px -5px rgba(70, 0, 100, 0.05);
+}
+
+.coolerName{
+    color:rgb(53, 47, 119);
+}
+
+.commentMessage{
+    background-color: rgb(243, 238, 255);
+}
+
+.comment p{
+    color: #657;
+}
+
+ul.comment>li{
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+li{ 
+    /*f�r att hover inte ska bli konstig*/
+    border: solid 2px transparent;
+    overflow-wrap:break-word;
+}
+
+h1{
+    font-family: 'MOTO VERSE', sans-serif;
+    text-align: center;
+    font-size: 2vmax;
+}
+h2{
+    font-family: 'Nu Kei', sans-serif;
+}
+
+/*--------------------------------------------------*/
+/*                  element cont.                   */
+/*--------------------------------------------------*/
+
+code{
+    /*necessity for resp*/
+    display: block;
+    height: auto;
+    padding: 0.5em;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    /*size*/
+    max-width: 100%;
+
+    /*style*/
+    border-radius: 3px;
+    background-color: gainsboro;
+}
+
+code::-webkit-scrollbar{
+    height: 10px;
+    background: #ccc;
+
+}
+
+code::-webkit-scrollbar-thumb{
+    height: 20px;
+    border-radius: 3px;
+    background: #ccc;
+    transition-duration: 0.2s;
+}
+
+code:hover::-webkit-scrollbar-thumb{
+    background: #999;
+}
+
+/*--------------------------------------------------*/
+/*                  text layout                     */
+/*--------------------------------------------------*/
+p.newLine{
+    /*allow newline*/
+    white-space: pre-line;
+}
+
+.readableLineHeight{
+    line-height: var(--comment-line-height);
+}
+.centerText{
+    text-align: center;
+}
+.splitGrid{
+
+    padding: 8%;
+    display: grid;
+    grid-template-areas: 
+    "left ."
+    ". right";    
+    grid-template-rows: auto;
+    grid-template-columns: 50% 50%;
+}
+
+.left, .right{
+    padding: 1em;
+    margin:1em;
+    border:#fef 1px solid;
+    box-shadow: #dcd 5px 5px;
+}
+.right{grid-area: right;}
+.left{grid-area: left;}
+
+.svgbr{
+    max-height: 1.5em;
+    position: relative;
+    display: block;
+    margin: 3vw auto 3vw auto;
+
+    /*for 3 circles r=5, each cx=1em++*/
+    width: 4em;
+    fill:rgb(207, 204, 221);
+}
+
+
+
+
+
+
+
+/*--------------------------------------------------*/
+/*                    resp, mq                      */
+/*--------------------------------------------------*/
+
+/*om sk�rmen �r ***px eller mindre i bredd*/
+/*phone*/
+@media screen and (max-width: 450px){
+    body{
+        padding: 0;
+    }
+    .flex{
+        flex-direction: column;
+    }
+    #wrapper
+    {
+        position: relative;
+        width: 100%;    
+        
+        padding:0;
+        padding-top:40px;
+
+
+        border: none;
+        border-radius: 0px;
+
+        background-color: rgb(255, 255, 255);
+    }
+    nav{
+        position: relative;
+        padding: 0;
+        margin:0;
+        width: 100%;
+        border: none;
+        border-radius: 0px;
+        top:0;
+        box-shadow:none;
+
+    }
+    main{
+        padding: 20px;
+    }
+    footer{
+        margin:0;
+    }
+    .comment{
+	width:100%;
+    }
+
+
+}
+
+/*tablet*/
+@media screen and (max-width: 900px){
+    body{
+        padding: 0px;
+    }
+    .flex{
+        flex-direction: column;
+    }
+    #wrapper{
+        position: relative;
+        width: 100%;
+        border: none;
+        border-radius: 0px;
+    }
+    nav{
+        position: relative;
+        width: 100%;
+        border: none;
+        border-radius: 0px;
+        top:0;
+        box-shadow:none;
+    }
+    header{
+       padding:15px;
+       }
+    
+    footer{
+        margin:0;
+    }
+
+
+
+    #drop{
+        display: block;
+    }
+    #menu{
+        display: none;
+    }
+
+    /*grid*/
+    .splitGrid{
+        grid-template-areas: 
+        "left"
+        "right";
+        grid-template-columns: 100%;
+    }
+
+    /*rm padding*/
+
+    .smallScreenPadding{
+        padding: 0px;
+    }
+}
+
+@media screen and (min-width: 901px){
+    #menu{
+        display: block !important;
+	    height:auto !important;
+    }
+}
